@@ -1,0 +1,16 @@
+.main-home-page-div {
+    text-align: center;
+    font-family: 'Josefin Sans';
+    color: #222;
+}
+
+.title-div {
+    background-color: black;
+    padding-top: 65px;
+    padding-bottom: 65px;
+    color: #fff;
+}
+
+.title {
+    font-size: 60px;
+}
