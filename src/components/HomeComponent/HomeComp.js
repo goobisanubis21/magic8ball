@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './homeComp.css';
 import Ball from './android-chrome-512x512.png'
 
@@ -10,12 +10,12 @@ function HomeComp() {
     function onSubmit(e) {
         e.preventDefault()
 
-        if(inputQuestion.current.value === '') {
+        if (inputQuestion.current.value === '') {
             setAnswer('You Must Not Leave the Question Blank')
             return
         }
 
-        if (inputQuestion.current.value.split("")[inputQuestion.current.value.length-1] !== '?') {
+        if (inputQuestion.current.value.split("")[inputQuestion.current.value.length - 1] !== '?') {
             setAnswer('I only Accept Questions')
             return
         }
@@ -27,10 +27,20 @@ function HomeComp() {
             .then(json => {
                 console.log(json);
                 setAnswer(json.magic.answer)
+                let storage = JSON.parse(localStorage.getItem('history'))
+                if (storage == null) storage = []
+                let newAnswer = {
+                    question: json.magic.question,
+                    answer: json.magic.answer
+                }
+                storage.push(newAnswer)
+                localStorage.setItem('history', JSON.stringify(storage))
+
             }).catch(err => {
                 console.log(err)
             });
     }
+
 
     return (
         <div className='main-home-page-div'>
