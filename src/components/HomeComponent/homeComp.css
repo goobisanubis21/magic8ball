@@ -2,16 +2,17 @@
     text-align: center;
     font-family: 'Josefin Sans';
     color: #222;
+    margin-bottom: 50px;
 }
 
 .title-div {
-    /* background-color: black; */
     background-image: url('https://cdn.substack.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F6e89b235-0756-46b8-a2d0-5b47356f5ff7_960x421.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 65px;
     padding-bottom: 65px;
     color: #fff;
+    box-shadow: 0 0 10px 10px black;
 }
 
 .title {
@@ -72,8 +73,20 @@
     100% { transform: rotate(360deg); }
   }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 900px) {
+    .input-box {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .title {
+        font-size: 50px;
+    }
     .image {
+        width: 80%;
+    }
+    .image-spin {
         width: 80%;
     }
 }
