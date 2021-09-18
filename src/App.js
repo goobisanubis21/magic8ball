@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import History from "./pages/History";
 
 function App() {
+  // returns component to user with given path
   return (
     <div className="App">
        <Router>

@@ -5,10 +5,13 @@ import Ball from './android-chrome-512x512.png'
 
 function HomeComp() {
 
+    // react state hooks to store answer and to manipulate loading animation
     const [answer, setAnswer] = useState("All of your Questions will be Answered");
     const [classes, setClasses] = useState('image')
+
     let inputQuestion = useRef();
 
+    // function to start loading response
     function startLoader(e) {
         e.preventDefault()
         setClasses('image-spin')
@@ -17,6 +20,7 @@ function HomeComp() {
         }, 2000);
     }
 
+    //function to make API call and get the return JSON data to display to the user
     function onSubmit() {
 
         setClasses('image')
@@ -31,6 +35,7 @@ function HomeComp() {
             return
         }
 
+        // API request using users input ref to search for a response
         let params = inputQuestion.current.value
         let uri = "https://8ball.delegator.com/magic/JSON/" + params;
         fetch(uri)
@@ -38,6 +43,7 @@ function HomeComp() {
             .then(json => {
                 console.log(json);
                 setAnswer(json.magic.answer)
+                // setting/getting local storage to store for the users history
                 let storage = JSON.parse(localStorage.getItem('history'))
                 if (storage == null) storage = []
                 let newAnswer = {
@@ -47,6 +53,7 @@ function HomeComp() {
                 storage.push(newAnswer)
                 localStorage.setItem('history', JSON.stringify(storage))
 
+            // catch any errors and log them
             }).catch(err => {
                 console.log(err)
             });
