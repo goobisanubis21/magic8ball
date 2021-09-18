@@ -1,10 +1,19 @@
 import React from "react";
-import Home from './pages/Home'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './pages/Home';
+import History from "./pages/History";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+       <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/history" component={History}/>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
