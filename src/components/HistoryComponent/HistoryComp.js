@@ -26,7 +26,7 @@ function HistoryComp() {
         // if local storage has data, data will be displayed
     } else {
         // items const will only store most recent 10 items
-        const items = test.slice(0, size)
+        const items = usersHistory.slice(0, size)
         return (
             <div className='main-history-div'>
                 <h1>History({items.length})</h1>
